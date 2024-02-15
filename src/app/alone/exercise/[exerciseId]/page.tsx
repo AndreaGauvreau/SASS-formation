@@ -1,4 +1,5 @@
-import Content from "@/components/content"
+import Content from "@/app/_components/(app)/content"
+import { getCurrentDirectory } from "@/lib/helpers"
 import { getExerciceById } from "@/lib/practices/exercices"
 import { notFound } from "next/navigation"
 
@@ -14,9 +15,16 @@ const Page = async ({
   if (!exerciseId) {
     notFound()
   }
-  const exercice = await getExerciceById(exerciseId)
+  const directory = getCurrentDirectory()
+  const exercice = await getExerciceById(exerciseId, directory)
 
-  return <Content practice={exercice} practiceType={"exercise"} />
+  return (
+    <Content
+      practice={exercice}
+      practiceType={"exercise"}
+      directory={directory}
+    />
+  )
 }
 
 export default Page

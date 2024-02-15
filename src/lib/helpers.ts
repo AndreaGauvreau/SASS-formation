@@ -17,7 +17,7 @@ export const getCurrentDirectory = () => {
   const checkAppDirectory = readDirectory(EXERCISE_DIRECTORY.app)
   if (checkAppDirectory.length > 0) return DIRECTORY_PATH.app
 
-  throw new Error("Aucun exercice trouvé. Lancez la commande `course`.")
+  throw new Error("Aucun exercice trouvé. Lancez la commande `course-app`.")
 }
 
 export const addLeadingZero = (number: string) => {
@@ -28,12 +28,17 @@ export const addLeadingZero = (number: string) => {
 export const getBonus = (id: string, name: string, options?: string) => {
   const bonusRegex = /bonus-(\d+)/
   const match = id.match(bonusRegex)
+
+  let bonus: string | undefined
   if (match) {
     const bonusNumber = match.at(-1)
-    return `bonus ${bonusNumber}`
+    bonus = `bonus ${bonusNumber}`
   }
-  if (options) return `${name} (${options})`
-  return name
+
+  const newName = bonus ?? name
+  if (options) return `${newName} (${options})`
+
+  return newName
 }
 
 export const getPracticesByIdAndType = async (
