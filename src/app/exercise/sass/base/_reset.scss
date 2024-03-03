@@ -1,0 +1,40 @@
+@use "./theme";
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+}
+img {
+  height: auto;
+}
+
+html {
+  font-size: 14px;
+}
+
+@include theme.for-tablet {
+  html {
+    font-size: 16px;
+  }
+}
+
+body {
+  font-family: theme.$base-text;
+  background: theme.$color-background;
+}
+
+h1 {
+  font-size: theme.$fs-xl;
+  font-weight: 800;
+  line-height: 1em;
+}
+p,
+span {
+  color: theme.$color-secondary-500;
+}

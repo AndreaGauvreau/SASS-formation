@@ -1,0 +1,29 @@
+@mixin button-states(
+  $hover-bg-color,
+  $active-bg-color,
+  $transition-duration: 0.3s
+) {
+  transition: $transition-duration;
+
+  &:hover {
+    background-color: $hover-bg-color;
+  }
+
+  &:active {
+    background-color: $active-bg-color;
+  }
+}
+
+@mixin fade-in-up($duration: 1s) {
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+  }
+  animation: fadeIn $duration ease;
+}
