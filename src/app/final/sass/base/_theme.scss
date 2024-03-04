@@ -1,0 +1,67 @@
+// 🐶 Fonction color-variant
+@function color-variant($color, $variant) {
+  @if $variant == 500 {
+    @return $color;
+  } @else if $variant == 700 {
+    @return scale-color($color, $lightness: -40%);
+  } @else if $variant == 900 {
+    @return scale-color($color, $lightness: -90%);
+  } @else {
+    @warn "Variant #{$variant} not supported.";
+    @return null;
+  }
+}
+
+// Fonts
+$base-text: "Poppins";
+
+// Palette
+$color-primary-500: rgb(247, 67, 67);
+$color-primary-700: color-variant($color-primary-500, 700);
+$color-primary-900: color-variant($color-primary-500, 900);
+
+$color-secondary-500: #373636;
+$color-secondary-700: color-variant($color-secondary-500, 700);
+$color-secondary-900: color-variant($color-secondary-500, 900);
+
+$color-background: rgb(244, 235, 235);
+
+// REM font-sizes
+$fs-caption: 0.875rem;
+$fs-sm: 1rem;
+$fs-md: 1.125rem;
+$fs-lg: 2rem;
+$fs-xl: 2.5rem;
+$fs-xxl: 3.125rem;
+$fs-3xl: 5rem;
+
+// dimensions
+$table-sub-container: 600px;
+
+// breakpoints
+$breakpoint-desktop-large: 1440px;
+$breakpoint-desktop: 1024px;
+$breakpoint-tablet: 768px;
+$breakpoint-mobile: 425px;
+
+@mixin for-phone-only {
+  @media (max-width: $breakpoint-mobile) {
+    @content;
+  }
+}
+@mixin for-tablet {
+  @media (min-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin for-desktop {
+  @media (min-width: $breakpoint-desktop) {
+    @content;
+  }
+}
+@mixin for-big-desktop-large {
+  @media (min-width: $breakpoint-desktop-large) {
+    @content;
+  }
+}

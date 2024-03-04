@@ -1,4 +1,4 @@
-// 🐶 Importe le fichier _index.scss du dossier base
+@use "../base";
 
 @mixin button-type(
   $primary-color: base.$color-primary-500,
